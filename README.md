@@ -61,7 +61,6 @@ const CLIENT_ID = "YOUR_CLIENT_ID";
 Go to **Rich Presence → Art Assets** and upload:
 
 * `youtube`
-* `lostgpu`
 * `twitch` (optional)
 
 📁 The YouTube image used in this project is located in the root folder as:
