@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Discord YouTube RPC",
+  "version": "1.0",
+  "permissions": ["tabs", "scripting", "activeTab"],
+  "host_permissions": ["http://localhost:3000/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
