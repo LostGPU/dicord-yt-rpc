@@ -61,7 +61,14 @@ const CLIENT_ID = "YOUR_CLIENT_ID";
 Go to **Rich Presence → Art Assets** and upload:
 
 * `youtube`
-* `twitch` (optional for Twitch support in a few days)
+* `lostgpu`
+* `twitch` (optional)
+
+📁 The YouTube image used in this project is located in the root folder as:
+
+```
+youtube.png
+```
 
 ---
 
@@ -82,11 +89,42 @@ node rpc-server.js
 
 ---
 
+## ▶️ Auto Start (Optional)
+
+### Create VBS file (runs silently)
+
+Create a file named `start.vbs`:
+
+```vbscript
+Set WshShell = CreateObject("WScript.Shell")
+WshShell.Run "cmd /c cd /d C:\PATH\TO\YOUR\PROJECT && node rpc-server.js", 0
+Set WshShell = Nothing
+```
+
+Replace `C:\PATH\TO\YOUR\PROJECT` with your project path.
+
+---
+
+### Add to Windows Startup
+
+1. Press `Win + R`
+2. Type:
+
+```
+shell:startup
+```
+
+3. Put the `start.vbs` file into this folder
+
+Now the RPC server starts automatically with Windows 🎉
+
+---
+
 ## ✅ Usage
 
 * Open YouTube
 * Play any video or Shorts
-* Your Discord status updates automatically 🎉
+* Your Discord status updates automatically
 
 ---
 
