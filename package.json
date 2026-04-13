@@ -1,0 +1,19 @@
+{
+  "name": "discord-yt-rpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rpc.js",
+  "scripts": {
+    "start": "node rpc.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@xhayper/discord-rpc": "^1.3.3",
+    "chrome-remote-interface": "^0.34.0",
+    "discord-rpc": "^4.0.1",
+    "express": "^5.2.1"
+  }
+}
