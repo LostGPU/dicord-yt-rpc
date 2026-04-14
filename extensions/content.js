@@ -3,7 +3,6 @@ let lastState = {
     time: 0
 };
 
-// 🧼 Titel Cleaner
 function cleanTitle(text) {
     if (!text) return "YouTube";
 
@@ -15,7 +14,6 @@ function cleanTitle(text) {
 
 function getShortsChannel() {
 
-    // 🥇 1. Try ytInitialData (BESTE Quelle bei Shorts)
     try {
         const data = window.ytInitialData;
 
@@ -36,14 +34,12 @@ function getShortsChannel() {
         }
     } catch (e) {}
 
-    // 🥈 2. ytInitialPlayerResponse fallback
     try {
         const p = window.ytInitialPlayerResponse;
         const ch = p?.videoDetails?.author;
         if (ch) return ch;
     } catch (e) {}
 
-    // 🥉 3. UI fallback (wenn alles fertig geladen ist)
     const ui =
         document.querySelector("ytd-channel-name #text")?.textContent;
 
@@ -52,7 +48,6 @@ function getShortsChannel() {
     return "YouTube";
 }
 
-// 📺 Normal Video Channel
 function getVideoChannel() {
 
     return (
@@ -62,7 +57,6 @@ function getVideoChannel() {
     ).trim();
 }
 
-// 🎬 MAIN DATA
 function getVideoData() {
 
     const video = document.querySelector("video");
@@ -103,7 +97,6 @@ function getVideoData() {
     };
 }
 
-// 📡 SEND LOGIC
 function sendData() {
 
     const data = getVideoData();
@@ -123,7 +116,6 @@ function sendData() {
     chrome.runtime.sendMessage(data);
 }
 
-// 🔁 LOOP
 setInterval(sendData, 2000);
 
-console.log("🎬 YouTube + Shorts FINAL FIX aktiv");
+console.log("🎬 YouTube + Shorts extension active");
