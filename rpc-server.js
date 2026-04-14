@@ -4,7 +4,7 @@ const RPC = require("@xhayper/discord-rpc");
 const app = express();
 app.use(express.json());
 
-const CLIENT_ID = "1492575025201676429";
+const CLIENT_ID = "YOUR_CLIENT_ID";
 
 let rpc;
 let isReady = false;
