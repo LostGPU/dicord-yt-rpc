@@ -10,43 +10,39 @@ let rpc;
 let isReady = false;
 let lastData = null;
 
-// 🔁 CONNECT FUNCTION
 function connectRPC() {
 
     rpc = new RPC.Client({ clientId: CLIENT_ID });
 
     rpc.on("ready", () => {
         isReady = true;
-        console.log("🚀 Discord RPC verbunden!");
+        console.log("🚀 Discord RPC connected!");
 
-        // 🔥 letzten State wieder setzen
         if (lastData) updateActivity(lastData);
     });
 
-    // 💥 DISCONNECT DETECT
     rpc.on("disconnected", () => {
-        console.log("❌ Discord getrennt → reconnect...");
+        console.log("❌ Discord disconnected → reconnect...");
         isReady = false;
 
         setTimeout(connectRPC, 5000);
     });
 
     rpc.on("error", () => {
-        console.log("⚠️ RPC Fehler → reconnect...");
+        console.log("⚠️ RPC Error → reconnect...");
         isReady = false;
 
         setTimeout(connectRPC, 5000);
     });
 
     rpc.login().catch(() => {
-        console.log("❌ Login fehlgeschlagen → retry...");
+        console.log("❌ Login failed → retry...");
         setTimeout(connectRPC, 5000);
     });
 }
 
 connectRPC();
 
-// 🌐 CORS
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
@@ -56,12 +52,10 @@ app.use((req, res, next) => {
     next();
 });
 
-// 🧠 STATE
 global.rpcState = global.rpcState || {
     start: Date.now()
 };
 
-// 🎬 UPDATE
 function updateActivity(data) {
 
     if (!isReady) return;
@@ -104,7 +98,6 @@ function updateActivity(data) {
     });
 }
 
-// 📡 ENDPOINT
 app.post("/update", (req, res) => {
 
     const data = req.body;
@@ -117,7 +110,6 @@ app.post("/update", (req, res) => {
     res.sendStatus(200);
 });
 
-// 🚀 START
 app.listen(3000, () => {
-    console.log("🌐 Server läuft auf http://localhost:3000");
+    console.log("🌐 Server is running on http://localhost:3000");
 });
